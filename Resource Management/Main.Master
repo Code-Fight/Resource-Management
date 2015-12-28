@@ -1,0 +1,230 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="Resource_Management.Main1" Runat="Server" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>无标题页</title>
+    <link href="JS/Style.css" rel="stylesheet" />
+    <script src="/JS/jquery-1.8.3.js"></script>
+    <link href="/JS/uploadify/uploadify.css" rel="stylesheet" />
+    <script src="/JS/uploadify/swfobject.js"></script>
+    <script src="/JS/uploadify/jquery.uploadify.js"></script>
+    <style type="text/css">
+        #tbid th {
+            background: #24789C;
+            color: #FFFFFF;
+            line-height: 20px;
+            height: 25px;
+        
+        }
+
+        #tbid td {
+            padding: 6px 6px 6px 12px;
+            /*border-bottom: 0.1px solid #95bce2;*/
+            /*border-top:0px  #95bce2;*/
+            /*vertical-align: top;*/
+            text-align: center;
+            font-size: 13px;
+            border: 1px solid #C1DAD7;
+            margin-bottom:0px;
+        }
+
+        #tbid td * {
+            /*padding: 6px 6px 6px 12px;*/
+        }
+
+        #tbid tr.alt td {
+            background: #ecf6fc; /*这行将给所有的tr加上背景色*/
+        }
+
+        #tbid tr.over td {
+            background: #DBF5FF; /*这个将是鼠标高亮行的背景色*/
+        }
+        #tbid.borderline{ border:solid 1px black; border-collapse:collapse;  border-color:Gray ; }
+        #tbid2 th {
+            background: #24789C;
+            color: #FFFFFF;
+            line-height: 20px;
+            height: 25px;
+        }
+
+        #tbid2 td {
+            border-bottom: 1px solid #95bce2;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 13px;
+            border: 1px solid #C1DAD7;
+            height:25px;
+            line-height:25px;
+        }
+        
+        #tbid2 tr.alt td {
+            background: #ecf6fc; /*这行将给所有的tr加上背景色*/
+        }
+
+        #tbid2 tr.over td {
+            background: #DBF5FF; /*这个将是鼠标高亮行的背景色*/
+        }
+
+        .selected {
+            background-color: #DBF5FF;
+        }
+        #tbid3 th {
+            background: #24789C;
+            color: #FFFFFF;
+            line-height: 20px;
+            height: 25px;
+        }
+
+        #tbid3 td {
+             padding: 6px 6px 6px 12px;
+            /*border-bottom: 0.1px solid #95bce2;*/
+            /*border-top:0px  #95bce2;*/
+            /*vertical-align: top;*/
+          
+            font-size: 13px;
+            border: 1px solid #C1DAD7;
+            margin-bottom:0px;
+        }
+        
+        #tbid3 tr.alt td {
+            background: #ecf6fc; /*这行将给所有的tr加上背景色*/
+        }
+
+        #tbid3 tr.over td {
+            background: #DBF5FF; /*这个将是鼠标高亮行的背景色*/
+        }
+    </style>
+    <script type="text/javascript">
+         
+        $(function () {
+            $("#tbid tr").mouseover(function () {
+                $(this).addClass("over");
+            }).mouseout(function () {
+                $(this).removeClass("over");
+            }).click(function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass("selected");
+                } else {
+                    $(this).addClass("selected").siblings().removeClass("selected");
+                }
+            });
+            $("#tbid tr:even").addClass("alt");
+
+            $("#tbid2 tr").mouseover(function () {
+                $(this).addClass("over");
+            }).mouseout(function () {
+                $(this).removeClass("over");
+            }).click(function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass("selected");
+                } else {
+                    $(this).addClass("selected").siblings().removeClass("selected");
+                }
+            });
+            $("#tbid2 tr:even").addClass("alt");
+        });
+    </script>
+    <script type="text/javascript" language="javascript" for="document" event="onkeydown">
+    <!--
+    //if(event.keyCode==13 && event.srcElement.type!='button' && event.srcElement.type!='submit' && event.srcElement.type!='reset' && event.srcElement.type!='textarea' && event.srcElement.type!='')
+    //    event.keyCode=9;
+    //-->
+    </script>
+    <script type="text/javascript" language="javascript">
+        onload = function() {
+            settablestyle();
+        }
+         
+        function settablestyle() {
+            var table = null;
+            for (var i = 0; i < 5; i++) {
+                if (i == 0) {
+                    table = "tbid";
+                    table2 = "tbid2";
+                }
+                else {
+                    table = "tbid" + i;
+                    table2 = "tbid2" + i;
+                }
+
+                if (document.getElementById(table) == null) {
+                    break;
+                }
+                var trs = document.getElementById(table).getElementsByTagName("tr");
+                for (var j = 0; j < trs.length; j++) {
+                    trs[j].style.backgroundColor = '';
+                    if (j % 2 == 0)
+                        trs[j].className = "tr1";
+                    else
+                        trs[j].className = "tr2";
+                }
+            }
+
+            $("#tbid tr").mouseover(function () {
+                $(this).addClass("over");
+            }).mouseout(function () {
+                $(this).removeClass("over");
+            }).click(function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass("selected");
+                } else {
+                    $(this).addClass("selected").siblings().removeClass("selected");
+                }
+            });
+            $("#tbid tr:even").addClass("alt");
+
+            $("#tbid2 tr").mouseover(function () {
+                $(this).addClass("over");
+            }).mouseout(function () {
+                $(this).removeClass("over");
+            }).click(function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass("selected");
+                } else {
+                    $(this).addClass("selected").siblings().removeClass("selected");
+                }
+            });
+            $("#tbid2 tr:even").addClass("alt");
+        }
+
+        function onkeychecknumber(event) {
+            if (event.keyCode < 48 || event.keyCode > 57) {
+                event.returnValue = false;
+            }
+        }
+        function onkeycheckdate(obj, event) {
+
+            if (obj.value.length == 0) {
+                if (event.keyCode < 48 || event.keyCode > 57) {
+                    event.returnValue = false;
+                }
+            }
+            if (event.keyCode < 48 || event.keyCode > 57) {
+                event.returnValue = false;
+            }
+        }
+        //后台调用前台弹出窗口
+        function AletMsg(msg) {
+            alert(msg);
+        }
+        
+    </script>
+     <%-- <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+      </asp:ContentPlaceHolder>--%>
+</head>
+<body>
+<div>
+    <a href="..//ResourceDetailManage/wfResourceManageSearch.aspx">资源列表</a>
+    <a href="..//ResourceTypeManage/wfResourceTypeManageSearch.aspx">资源类型管理</a>
+   
+</div>
+    <form id="form1" runat="server">
+        <div style="width: 80%;margin: 0 auto">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
